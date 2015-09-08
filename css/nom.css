@@ -3,37 +3,84 @@ body
 	font-family: Lato,Roboto,sans-serif;
 }
 	
-	.nav li a {
-			font-size: 1.2em;
-			font-weight: 300;
-	}
+.nav li a {
+	font-weight: 300;
+}
+
+.center-width{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.nomPage .svg-container{
 	
-	.background-img {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
 	
-    .about-page-img-fade-out
-    {
-       opacity: 0.2;
-       transition: opacity 2s ease-in-out;
-    }
+	
+}
 
-	@-webkit-keyframes nomColor 
-	{
-		from{
-			stroke: #9ED7E8;
-		}
-		to
-		{
-			stroke: #FFFFFF;
-		}
-	}
+.nomPage .svg-container  svg{
+	width  : 100%;
+	padding : 50px;
+	max-height : 400px;
+}
+	
+//animation
+.about-page-img-fade-out {
+     opacity: 0.2;
+     transition: opacity 2s ease-in-out;
+ }
 
-	.nom-change-color
-	{
-		-webkit-animation: nomColor 1s normal forwards ease-in-out;
+
+ 
+@-webkit-keyframes nomColorIn {
+	from{
+		stroke: #9ED7E8;
 	}
+	to{
+		stroke: #FFFFFF;
+	}
+}
+
+@-webkit-keyframes nomColorOut {
+	from{
+		stroke: #FFFFFF;
+	}
+	to{
+		stroke: #9ED7E8;
+	}
+}
+
+@-webkit-keyframes navColorOut {
+	from{
+		color: #9ED7E8;
+	}
+	to{
+		color: #777;
+	}
+}
+
+@-webkit-keyframes navColorIn {
+	from{
+		color: #777;
+	}
+	to{
+		color: #9ED7E8;
+	}
+}
+
+.nav-color-in{
+	-webkit-animation: navColorIn 0.15s normal forwards ease-in-out;
+}
+
+.nav-color-out{
+	-webkit-animation: navColorOut 1s normal forwards ease-in-out;
+}
+
+.nom-change-color-in{
+	-webkit-animation: nomColorIn 2s normal forwards ease-in-out;
+}
+
+.nom-change-color-out{
+	-webkit-animation: nomColorOut 0.1s normal forwards ease-in-out;
+}
 

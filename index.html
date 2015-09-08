@@ -18,174 +18,13 @@
 	<!-- This following line is only necessary in the case of using the plugin option `scrollOverflow:true` -->
 	<script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
 	<script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+	<script type="text/javascript" src="js/tweenmax.min.js"></script>
+	<script type="text/javascript" src="js/nom.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.min.css" />
-	
-	<!--<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">-->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" href="css/nom.css"/>
-
-	<script type="text/javascript">
-
-function isNavMobileMode() {
-    return ($('.navbar-toggle').css('display') != 'none');
-};
-
-
-function animationWhenEnter(elementString, animationNameArg)
-{
-	animatted = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-	
-	$(elementString).mouseenter(function(event) {
-	
-		animationaName = 'animated ' + animationNameArg;
-		element = $(event.target);
-
-		element.addClass(animationaName).one(animatted, function(){
-			element.removeClass(animationaName);
-		});
-			
-	});
-
-	$(elementString).mouseleave(function(event) {
-	
-		animationaName = 'animated ' + animationNameArg;
-		element = $(event.target);
-		element.removeClass(animationaName);
-	});
-}
-
-function animateNomPage()
-{
-	$('.nomPage .nomSvg path').attr("class", "nomSvg nom-change-color");
-}
-
-function stopAnimateNomPage()
-{
-	$('.nomPage .nomSvg').attr("class", "nomSvg");
-}
-
-function animateAboutUsPage()
-{
-	$('.aboutUsPage .background-img').addClass('about-page-img-fade-out');
-}
-
-function stoptAnimateAboutUsPage()
-{
-	$('.aboutUsPage .background-img').removeClass('about-page-img-fade-out');
-}
-
-$(document).ready(function() {
-
-		$(window).resize(function() {
-		   
-		});
-		
-		if (isNavMobileMode()){
-			animationWhenEnter('nav ul a', ' pulse');
-		}
-		else{
-			animationWhenEnter('nav ul a', ' wobble');
-		}
-
-		$('nav ul a').on('click', function(event){
-		
-			if (isNavMobileMode())
-			{
-				setTimeout(function(){
-					$('.navbar-toggle').click(); 
-				}, 500); 
-			}
-		});
-   
-		 $('#fullpage').fullpage({
-	
-        //Navigation
-        menu: false,
-        lockAnchors: false,
-        anchors:['AboutUs', 'OurGames', 'OurDreamTeam', 'ContactUs'],
-        navigation: false,
-        navigationPosition: 'right',
-        showActiveTooltip: false,
-        slidesNavigation: false,
-        slidesNavPosition: 'bottom',
-
-        //Scrolling
-        css3: true,
-        scrollingSpeed: 700,
-        autoScrolling: true,
-        fitToSection: true,
-        fitToSectionDelay: 1000,
-        scrollBar: false,
-        easing: 'easeInOutCubic',
-        easingcss3: 'ease',
-        loopBottom: true,
-        loopTop: false,
-        loopHorizontal: true,
-        continuousVertical: false,
-        normalScrollElements: '#element1, .element2',
-        scrollOverflow: true,
-        touchSensitivity: 15,
-        normalScrollElementTouchThreshold: 5,
-
-        //Accessibility
-        keyboardScrolling: true,
-        animateAnchor: true,
-        recordHistory: true,
-
-        //Design
-        controlArrows: true,
-        verticalCentered: true,
-        resize : true,
-        sectionsColor: ['#C63D0F', '#9ED7E8', '#7E8F7C', '#1BBC9B'],
-        paddingTop: '0px',
-        paddingBottom: '0px',
-        fixedElements: '#fullPageHeader, .footer',
-        responsiveWidth: 0,
-        responsiveHeight: 0,
-
-        //Custom selectors
-        sectionSelector: '.section',
-        slideSelector: '.fullpageSlide',
-
-        //events
-        onLeave: function(index, nextIndex, direction){
-			
-			stoptAnimateAboutUsPage();
-			stopAnimateNomPage();
-
-			console.log(nextIndex);
-			
-			if (nextIndex == 1)
-			{
-				animateAboutUsPage();
-			}
-			
-			if (nextIndex == 2)
-			{
-				animateNomPage();
-				/*
-				$('.OurGames1 .ziki').addClass('animated bounceInUp').
-				one(animatted, function(){
-					$('.OurGames1 .ziki').removeClass('animated bounceInUp');
-				});;
-				*/
-			}
-			
-		},
-        afterLoad: function(anchorLink, index){},
-        afterRender: function(){},
-        afterResize: function(){},
-        afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
-        onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
-		});
-		
-		animateAboutUsPage();
-	});
-
-</script>
-	
-</style>
-	
+	<link rel="stylesheet" href="css/nom.css"/>	
 </head>
 <body>
 
@@ -206,45 +45,49 @@ $(document).ready(function() {
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navigationbar">
       <ul class="nav navbar-nav">
-        <li><a href="#AboutUs">About Us</a></li>
-        <li><a href="#OurGames">Our Games</a></li>
-		<li><a href="#OurDreamTeam">Our Dream Team</a></li>
-		<li><a href="#ContactUs">Contact Us</a></li>
+	    <li><a href="#nomPage"><div>Nom</div></a></li>
+        <li><a href="#aboutUs">About Us</a></li>
+		<li><a href="#contactUs">Contact</a></li>
       </ul>
   </div><!-- /.container-fluid -->
 </nav>
-
 <div id="fullpage">
 
-    <div class="section aboutUsPage">
-		 <image class="background-img" src="ilyonLogo.png"/>
-	</div>
     <div class="section nomPage">
-    	<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1280 800" enable-background="new 0 0 1280 800" xml:space="preserve">
-		<g class="nomSvg">
+
+		<div class="svg-container">
+		<?xml version="1.0" encoding="utf-8"?>
+		<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="224 255 987 291" enable-background="new 224 255 987 291" xml:space="preserve" >
+		<g>
 			<defs>
-				<rect id="SVGID_1_" x="152" y="246.6" width="973" height="278.4"/>
+				<rect id="SVGID_1_" x="231" y="261.6" width="973" height="278.4"/>
 			</defs>
 			<clipPath id="SVGID_2_">
 				<use xlink:href="#SVGID_1_"  overflow="visible"/>
 			</clipPath>
-				<path clip-path="url(#SVGID_2_)" fill="none" stroke-width="21.95" stroke-linecap="round" stroke-linejoin="round" d="
-				M400.5,329.4c0,0,5.9,45.5-1.9,92.7c-6.9,41.6-63.3-7.2-78.8-17c-52.4-33.1-104.3-70.2-114.3-76c-30.4-17.6-31.9,29.9-31.9,29.9
-				L163,450.1"/>
-				<path clip-path="url(#SVGID_2_)" fill="none" stroke-width="21.95" d="M608.6,259.7c0,0,191.1,34.9,151.9,174.7
-					c-33.5,119.3-299.4,97.6-310.4-18.7C439.2,299.8,527.8,246,608.6,259.7z"/>
-				<path clip-path="url(#SVGID_2_)" fill="none" stroke-width="21.95" stroke-linecap="round" d="M832,459.6
-					c0,0-51.9-171.1,13.1-125.6c48.8,34.2,64.4,45.1,86.1,52.7c39.6,13.9,67.3-12.7,67.3-12.7s23-16.9,76.9-55
-					c53.9-38.1,37.5,23.5,31.4,49.7c-6.1,26.2-31.3,75.5-31.3,75.5"/>
+			
+				<path clip-path="url(#SVGID_2_)" fill="none" stroke="#231F20" stroke-width="21.95" stroke-linecap="round" stroke-linejoin="round" d="
+				M479.5,344.4c0,0,5.9,45.5-1.9,92.7c-6.9,41.6-63.3-7.2-78.8-17c-52.4-33.1-104.3-70.2-114.3-76c-30.4-17.6-31.9,29.9-31.9,29.9
+				L242,465.1"/>
+			<path clip-path="url(#SVGID_2_)" fill="none" stroke="#231F20" stroke-width="21.95" d="M687.6,274.7c0,0,191.1,34.9,151.9,174.7
+				c-33.5,119.3-299.4,97.6-310.4-18.7C518.2,314.8,606.8,261,687.6,274.7z"/>
+			<path clip-path="url(#SVGID_2_)" fill="none" stroke="#231F20" stroke-width="21.95" stroke-linecap="round" d="M911,474.6
+				c0,0-51.9-171.1,13.1-125.6c48.8,34.2,64.4,45.1,86.1,52.7c39.6,13.9,67.3-12.7,67.3-12.7s23-16.9,76.9-55
+				c53.9-38.1,37.5,23.5,31.4,49.7c-6.1,26.2-31.3,75.5-31.3,75.5"/>
 		</g>
-</svg>
-	</div>
-	<div class="section">
-		Some section
-	</div>
-	<div class="section">
+		</svg>
 
+		</div>
+		
+	</div>
+	
+	<div class="section">
+		<div id="textDiv">Void Canvas, the web and app developers' community.</div>
+	</div>
+	<div class="section">
+		contactUs
 	</div>
 </div>
 
