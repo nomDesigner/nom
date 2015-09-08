@@ -1,0 +1,39 @@
+body
+{
+	font-family: Lato,Roboto,sans-serif;
+}
+	
+	.nav li a {
+			font-size: 1.2em;
+			font-weight: 300;
+	}
+	
+	.background-img {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	
+    .about-page-img-fade-out
+    {
+       opacity: 0.2;
+       transition: opacity 2s ease-in-out;
+    }
+
+	@-webkit-keyframes nomColor 
+	{
+		from{
+			stroke: #9ED7E8;
+		}
+		to
+		{
+			stroke: #FFFFFF;
+		}
+	}
+
+	.nom-change-color
+	{
+		-webkit-animation: nomColor 1s normal forwards ease-in-out;
+	}
+
