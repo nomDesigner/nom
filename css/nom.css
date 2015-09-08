@@ -41,7 +41,25 @@ body
 	}
 }
 
+@keyframes nomColorIn {
+	from{
+		stroke: #9ED7E8;
+	}
+	to{
+		stroke: #FFFFFF;
+	}
+}
+
 @-webkit-keyframes nomColorOut {
+	from{
+		stroke: #FFFFFF;
+	}
+	to{
+		stroke: #9ED7E8;
+	}
+}
+
+@keyframes nomColorOut {
 	from{
 		stroke: #FFFFFF;
 	}
@@ -59,6 +77,15 @@ body
 	}
 }
 
+@keyframes navColorOut {
+	from{
+		color: #9ED7E8;
+	}
+	to{
+		color: #777;
+	}
+}
+
 @-webkit-keyframes navColorIn {
 	from{
 		color: #777;
@@ -68,19 +95,31 @@ body
 	}
 }
 
+@keyframes navColorIn {
+	from{
+		color: #777;
+	}
+	to{
+		color: #9ED7E8;
+	}
+}
 .nav-color-in{
 	-webkit-animation: navColorIn 0.15s normal forwards ease-in-out;
+	animation :navColorIn 0.15s normal forwards ease-in-out;
 }
 
 .nav-color-out{
 	-webkit-animation: navColorOut 1s normal forwards ease-in-out;
+	animation :  navColorOut 1s normal forwards ease-in-out;
 }
 
 .nom-change-color-in{
 	-webkit-animation: nomColorIn 2s normal forwards ease-in-out;
+	animation : nomColorIn 2s normal forwards ease-in-out;
 }
 
 .nom-change-color-out{
 	-webkit-animation: nomColorOut 0.1s normal forwards ease-in-out;
+	animation : nomColorOut 0.1s normal forwards ease-in-out;
 }
 
