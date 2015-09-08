@@ -25,6 +25,7 @@ body
 }
 .nomPage .nom-circ-svg-container svg{
 	width  : 10%;
+	min-width : 70px;
 }
 //animation
 .about-page-img-fade-out {
