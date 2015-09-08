@@ -12,18 +12,20 @@ body
 	margin-right: auto;
 }
 
-.nomPage .svg-container{
+.nomPage .nom-svg-container{
 	
 	
 	
 }
 
-.nomPage .svg-container  svg{
+.nomPage .nom-svg-container  svg{
 	width  : 100%;
 	padding : 50px;
 	max-height : 400px;
 }
-	
+.nomPage .nom-circ-svg-container svg{
+	width  : 10%;
+}
 //animation
 .about-page-img-fade-out {
      opacity: 0.2;
