@@ -26,12 +26,16 @@ function animationWhenEnter(elementString, animationNameArg)
 
 function animateNomPage()
 {
-	$('.nomPage g path').attr("class", "nomSvg nom-change-color-in");
+	$('.nomPage g path').attr("class", "nom-change-color-in");
+	$('.nomPage g circle').attr("class", "nom-change-color-in");
+	$('.nomPage .nom-circ').addClass('animated rubberBand');
 }
 
 function stopAnimateNomPage()
 {
-	$('.nomPage g path').attr("class", "nomSvg nom-change-color-out");
+	$('.nomPage g path').attr("class", "nom-change-color-out");
+	$('.nomPage g circle').attr("class", "nom-change-color-out");
+	$('.nomPage .nom-circ').removeClass('animated rubberBand');
 }
 
 function animateText(elementName)

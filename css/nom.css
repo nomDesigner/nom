@@ -22,22 +22,24 @@ body
 	max-height : 400px;
 }
 
-.nomPage .nom-circ {
-	width : 25%;
-	max-width: 200px;
+.nomPage table {
+	width : 100%;
 }
 
-.nomPage .nom-circ svg{
+.nomPage table tr .td-circ{
+
+}
+
+.nomPage table tr .td-separate{
+	width : 5%;
+}
+
+.nomPage table tr .td-edge{
+	width : 10%;
+}
+
+.nomPage .nom-circ{
 	width  : 100%;
-}
-
-.nomPage .nom-circ foreignobject{
-	width  : 100%;
-	height : 100%;
-}
-
-.nomPage .nom-circ foreignobject div{
-	padding: 40%;
 }
 
 //animation
