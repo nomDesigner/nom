@@ -53,27 +53,9 @@ function animateText(elementName)
 
 }
 
-$(document).ready(function() {
-
-		animateNomPage();
-		
-		$(window).resize(function() {
-		   
-		});
-		
-		animationWhenEnter('nav ul a', ' pulse');
-
-		$('nav ul a').on('click', function(event){
-		
-			if (isNavMobileMode())
-			{
-				setTimeout(function(){
-					$('.navbar-toggle').click(); 
-				}, 500); 
-			}
-		});
-   
-		 $('#fullpage').fullpage({
+function initFullPage()
+{
+	 $('#fullpage').fullpage({
 	
         //Navigation
         menu: false,
@@ -152,4 +134,29 @@ $(document).ready(function() {
         afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
         onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
 		});
+}
+
+$(document).ready(function() {
+
+		animateNomPage();
+		
+
+		$(window).resize(function() {
+		   
+		});
+		
+		animationWhenEnter('nav ul a', ' pulse');
+
+		$('nav ul a').on('click', function(event){
+		
+			if (isNavMobileMode())
+			{
+				setTimeout(function(){
+					$('.navbar-toggle').click(); 
+				}, 300); 
+			}
+		});
+
+		initFullPage();
+   
 });
