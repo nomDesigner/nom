@@ -2,7 +2,12 @@ body
 {
 	font-family: Lato,Roboto,sans-serif;
 }
-	
+
+.clear-float
+{
+	clear: left;
+}
+
 .nav li a {
 	font-weight: 300;
 }
@@ -10,6 +15,10 @@ body
 .center-width{
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.right-width{
+	float:right;
 }
 
 .nomPage .nom-svg-container{
@@ -26,8 +35,9 @@ body
 	width : 100%;
 }
 
-.nomPage table tr .td-circ{
-
+.nomPage table tr .nom-circ{
+	max-width : 200px;
+	width  : 100%;
 }
 
 .nomPage table tr .td-separate{
@@ -36,10 +46,6 @@ body
 
 .nomPage table tr .td-edge{
 	width : 10%;
-}
-
-.nomPage .nom-circ{
-	width  : 100%;
 }
 
 //animation
