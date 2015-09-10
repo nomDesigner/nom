@@ -64,7 +64,7 @@ function initFullPage()
         //Navigation
         menu: false,
         lockAnchors: false,
-        anchors:['nomPage', 'aboutUs', 'contactUs'],
+        anchors:['nomPage', 'artPage', 'designPage', 'photoPage' ,'aboutUs', 'contactUs'],
         navigation: false,
         navigationPosition: 'right',
         showActiveTooltip: false,
@@ -140,7 +140,16 @@ function initFullPage()
 		});
 }
 
+function initLinksNomPage()
+{
+	$('.nomPage table tr .nom-circ').click(function() {
+  		 location.href = $(this).data('url');
+	});
+}
+
 $(document).ready(function() {
+
+		initLinksNomPage();
 
 		animateNomPage();
 		
