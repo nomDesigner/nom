@@ -98,7 +98,7 @@ function initFullPage()
         controlArrows: true,
         verticalCentered: false,
         resize : false,
-        sectionsColor: ['#9ED7E8', '#9ED7E8', '#7E8F7C', '#1BBC9B'],
+        sectionsColor: ['#9ED7E8', '#F6EF76', '#7E8F7C', '#1BBC9B'],
         paddingTop: '50px',
         paddingBottom: '0px',
         fixedElements: '.fullPageHeader, .footer',
