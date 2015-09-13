@@ -9,19 +9,23 @@
 	var RADIUS_SCALE_MAX = 1.5;
 	
 	// The number of particles that are used to generate the trail
+	
 	var QUANTITY = 55;
 
 	var canvas;
 	var context;
 	var particles;
 	
-	var mouseX = (window.innerWidth - SCREEN_WIDTH);
-	var mouseY = (window.innerHeight - SCREEN_HEIGHT);
+	var mouseX = (window.innerWidth - SCREEN_WIDTH) + 55;
+	var mouseY = (window.innerHeight - SCREEN_HEIGHT) + 55;
 	var mouseIsDown = false;
 
 	function initTrailNomPage() {
 
-		
+		if(jQuery.browser.mobile){
+			QUANTITY = 5;
+		}
+
 		initBox();
 		
 		canvas = document.getElementById('world');

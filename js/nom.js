@@ -143,7 +143,18 @@ function initFullPage()
 function initLinksNomPage()
 {
 	$('.nomPage table tr .nom-circ').click(function() {
-  		 location.href = $(this).data('url');
+		
+	if(jQuery.browser.mobile){
+			
+		setTimeout(function(){
+					 location.href = $(this).data('url');
+				}, 300); 
+	}
+	else{
+		 location.href = $(this).data('url');
+	}
+			
+  		
 	});
 }
 
@@ -152,7 +163,6 @@ $(document).ready(function() {
 		initLinksNomPage();
 
 		animateNomPage();
-		
 
 		$(window).resize(function() {
 		   
