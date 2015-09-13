@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
 	<script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
 	<script type="text/javascript" src="js/nom.js"></script>
+<script type="text/javascript" src="js/trail.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.min.css" />
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
@@ -53,8 +54,15 @@
 <div id="fullpage">
 
     <div class="section nomPage">
-
-		<div class="nom-svg-container">
+		
+		<div class="canvas-wrap">
+		
+			<canvas id='world'></canvas>
+		
+			<div class="overlay">	
+			
+			
+				<div class="nom-svg-container">
 			<?xml version="1.0" encoding="utf-8"?>
 			<svg version="1.1" id="Layer_1_A" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				 viewBox="224 255 987 291" enable-background="new 224 255 987 291" xml:space="preserve" >
@@ -77,8 +85,8 @@
 			</g>
 			</svg>
 		</div>
-		<table>
-			<tr>
+				<table>
+					<tr>
 			
 				<td class="td-edge"/>
 				<!-- 1 -->
@@ -144,14 +152,19 @@
 				<div class="clear-float"/>
 			</tr>
 			
-		</table>
+				</table>
 	
+		  </div>
+		  
+		
+		  
+		</div>
+	</div>
+	<div class="section artPage">
+		<img class="center-width" src="img/owl_hor.jpg" />
 	</div>
 	<div class="section">
-		<div>Art</div>
-	</div>
-	<div class="section">
-		<div>Design</div>
+	
 	</div>
 	<div class="section">
 		<div>Photography</div>
@@ -165,4 +178,5 @@
 </div>
 
 </body>
+
 </html>
