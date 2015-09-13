@@ -183,4 +183,17 @@ $(document).ready(function() {
 
 		initFullPage();
 		initTrailNomPage();
+		
 });
+
+var resizeId;
+
+		$(window).resize(function() {
+			clearTimeout(resizeId);
+			resizeId = setTimeout(doneResizing, 500);
+		});
+ 
+ 
+function doneResizing(){
+   windowResizeHandler();
+}

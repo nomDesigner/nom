@@ -26,8 +26,6 @@
 			QUANTITY = 5;
 		}
 
-		initBox();
-		
 		canvas = document.getElementById('world');
 		
 		if (canvas && canvas.getContext) {
@@ -37,9 +35,8 @@
 			document.addEventListener('mousemove', documentMouseMoveHandler, false);
 			document.addEventListener('mousedown', documentMouseDownHandler, false);
 			document.addEventListener('mouseup', documentMouseUpHandler, false);
-			canvas.addEventListener('touchstart', canvasTouchStartHandler, false);
-			canvas.addEventListener('touchmove', canvasTouchMoveHandler, false);
-			window.addEventListener('resize', windowResizeHandler, false);
+			document.addEventListener('touchstart', canvasTouchStartHandler, false);
+			document.addEventListener('touchmove', canvasTouchMoveHandler, false);
 			
 			createParticles();
 			
@@ -47,15 +44,6 @@
 			
 			setInterval( loop, 1000 / 60 );
 		}
-	}
-	
-	function  initBox()
-	{
-		element = $('.nomPage');
-		paddingTop = element.css("padding-top");
-		
-		SCREEN_WIDTH  =  element.width();
-		SCREEN_HEIGHT =  element.height() - 50;
 	}
 	
 	function createParticles() {
@@ -79,8 +67,8 @@
 	}
 
 	function documentMouseMoveHandler(event) {
-		mouseX = event.clientX - (window.innerWidth - SCREEN_WIDTH) * .5;
-		mouseY = event.clientY - (window.innerHeight - SCREEN_HEIGHT) * .5;
+		mouseX = event.clientX - (window.innerWidth - SCREEN_WIDTH);
+		mouseY = event.clientY - (window.innerHeight - SCREEN_HEIGHT);
 	}
 	
 	function documentMouseDownHandler(event) {
@@ -95,8 +83,8 @@
 		if(event.touches.length == 1) {
 			event.preventDefault();
 
-			mouseX = event.touches[0].pageX - (window.innerWidth - SCREEN_WIDTH) * .5;
-			mouseY = event.touches[0].pageY - (window.innerHeight - SCREEN_HEIGHT) * .5;
+			mouseX = event.touches[0].pageX - (window.innerWidth - SCREEN_WIDTH);
+			mouseY = event.touches[0].pageY - (window.innerHeight - SCREEN_HEIGHT);
 		}
 	}
 	
@@ -104,14 +92,18 @@
 		if(event.touches.length == 1) {
 			event.preventDefault();
 
-			mouseX = event.touches[0].pageX - (window.innerWidth - SCREEN_WIDTH) * .5;
-			mouseY = event.touches[0].pageY - (window.innerHeight - SCREEN_HEIGHT) * .5;
+			mouseX = event.touches[0].pageX - (window.innerWidth - SCREEN_WIDTH);
+			mouseY = event.touches[0].pageY - (window.innerHeight - SCREEN_HEIGHT);
 		}
 	}
 	
 	function windowResizeHandler() {
 
-		initBox();
+		element = $('.nomPage');
+		padding = element.css("padding");
+		
+		SCREEN_WIDTH  =  element.width();
+		SCREEN_HEIGHT =  element.height();
 		
 		canvas.width = SCREEN_WIDTH;
 		canvas.height = SCREEN_HEIGHT;
