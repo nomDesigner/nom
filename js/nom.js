@@ -144,14 +144,16 @@ function initLinksNomPage()
 {
 	$('.nomPage table tr .nom-circ').click(function() {
 		
+		var ref = $(this).data('url');
+		
 		if(jQuery.browser.mobile){
 				
 			setTimeout(function(){
-						 location.href = $(this).data('url');
+						 location.href = ref;
 					}, 300); 
 		}
 		else{
-			 location.href = $(this).data('url');
+			 location.href = ref;
 		}
 			
 	});
