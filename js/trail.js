@@ -9,7 +9,7 @@
 	var RADIUS_SCALE_MAX = 1.5;
 	
 	// The number of particles that are used to generate the trail
-	var QUANTITY = 5;
+	var QUANTITY = 55;
 
 	var canvas;
 	var context;
@@ -41,7 +41,7 @@
 			
 			windowResizeHandler();
 			
-			setInterval( loop, 1000 / 30 );
+			setInterval( loop, 1000 / 60 );
 		}
 	}
 	
@@ -65,6 +65,7 @@
 				angle: 0,
 				speed: 0.01+Math.random()*0.04,
 				targetSize: 1,
+				//fillColor : "rgba(254,0,0,0.5)",
 				fillColor: '#' + (Math.random() * 0x404040 + 0xaaaaaa | 0).toString(16),
 				orbit: RADIUS*.5 + (RADIUS * .5 * Math.random())
 			};
