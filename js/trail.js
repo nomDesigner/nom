@@ -9,7 +9,7 @@
 	var RADIUS_SCALE_MAX = 1.5;
 	
 	// The number of particles that are used to generate the trail
-	var QUANTITY = 50;
+	var QUANTITY = 5;
 
 	var canvas;
 	var context;
@@ -41,7 +41,7 @@
 			
 			windowResizeHandler();
 			
-			setInterval( loop, 1000 / 60 );
+			setInterval( loop, 1000 / 30 );
 		}
 	}
 	
