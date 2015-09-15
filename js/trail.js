@@ -25,9 +25,7 @@
 		if(jQuery.browser.mobile){
 			QUANTITY = 5;
 		}
-
-		initBox();
-		
+	
 		canvas = document.getElementById('world');
 		
 		if (canvas && canvas.getContext) {
@@ -47,15 +45,6 @@
 			
 			setInterval( loop, 1000 / 60 );
 		}
-	}
-	
-	function  initBox()
-	{
-		element = $('.nomPage');
-		paddingTop = element.css("padding-top");
-		
-		SCREEN_WIDTH  =  element.width();
-		SCREEN_HEIGHT =  element.height() - 50;
 	}
 	
 	function createParticles() {
@@ -111,14 +100,15 @@
 	
 	function windowResizeHandler() {
 
-		initBox();
+		element = $('.nomPage');
+		
+		SCREEN_WIDTH  =  element.width();
+		SCREEN_HEIGHT =  element.height() - 50;
 		
 		canvas.width = SCREEN_WIDTH + 0;
 		canvas.height = SCREEN_HEIGHT + 0;
 		
 		canvas.style.position = 'absolute';
-	//	canvas.style.left = (window.innerWidth - SCREEN_WIDTH) * .5 + 'px';
-	//	canvas.style.top = (window.innerHeight - SCREEN_HEIGHT) * .5 + 'px';
 	}
 
 	function loop() {
