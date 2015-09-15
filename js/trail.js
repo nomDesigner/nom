@@ -113,8 +113,8 @@
 
 		initBox();
 		
-		canvas.width = SCREEN_WIDTH;
-		canvas.height = SCREEN_HEIGHT;
+		canvas.width = SCREEN_WIDTH + 0;
+		canvas.height = SCREEN_HEIGHT + 0;
 		
 		canvas.style.position = 'absolute';
 	//	canvas.style.left = (window.innerWidth - SCREEN_WIDTH) * .5 + 'px';
