@@ -108,6 +108,11 @@
 		canvas.width = SCREEN_WIDTH + 0;
 		canvas.height = SCREEN_HEIGHT + 0;
 		
+		if(jQuery.browser.mobile){
+			mouseX = canvas.width / 2;
+			mouseY = canvas.height / 2;
+		}
+		
 		canvas.style.position = 'absolute';
 	}
 
