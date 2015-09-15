@@ -103,10 +103,10 @@
 		element = $('.nomPage');
 		
 		SCREEN_WIDTH  =  element.width();
-		SCREEN_HEIGHT =  element.height() - 50;
+		SCREEN_HEIGHT =  element.height();
 		
-		canvas.width = SCREEN_WIDTH + 0;
-		canvas.height = SCREEN_HEIGHT + 0;
+		canvas.width = SCREEN_WIDTH;
+		canvas.height = SCREEN_HEIGHT;
 		
 		if(jQuery.browser.mobile){
 			mouseX = canvas.width / 2;

@@ -99,7 +99,7 @@ function initFullPage()
         verticalCentered: false,
         resize : false,
         sectionsColor: ['#9ED7E8', '#F6EF76', '#7E8F7C', '#1BBC9B'],
-        paddingTop: '50px',
+        paddingTop: '0px',
         paddingBottom: '0px',
         fixedElements: '.fullPageHeader, .footer',
         responsiveWidth: 0,
@@ -182,5 +182,5 @@ $(document).ready(function() {
 		});
 
 		initFullPage();
-		initTrailNomPage();
+		initTrailNomPage();	
 });
