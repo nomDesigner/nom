@@ -16,6 +16,8 @@
 	var context;
 	var particles;
 	
+	var trailInterval;
+	
 	var mouseX = (window.innerWidth - SCREEN_WIDTH) + 55;
 	var mouseY = (window.innerHeight - SCREEN_HEIGHT) + 55;
 	var mouseIsDown = false;
@@ -43,8 +45,19 @@
 			
 			windowResizeHandler();
 			
-			setInterval( loop, 1000 / 60 );
+			startTrail();
 		}
+	}
+	
+	function stopTrail(){
+		if (trailInterval){
+			clearInterval(trailInterval);
+			trailInterval = null;
+		}
+	}
+	
+	function startTrail(){
+		trailInterval = setInterval( loop, 1000 / 60 );
 	}
 	
 	function createParticles() {

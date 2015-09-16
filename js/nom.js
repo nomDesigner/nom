@@ -113,10 +113,12 @@ function initFullPage()
         onLeave: function(index, nextIndex, direction){
 	
 			stopAnimateNomPage();
+			stopTrail();
 			
 			if (nextIndex == 1)
 			{
 				animateNomPage();
+				startTrail();
 			}
 			
 			if (nextIndex == 2)
