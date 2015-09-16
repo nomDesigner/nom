@@ -45,14 +45,17 @@ body
 	float:right;
 }
 .canvas-wrap {
- position:relative
+ position:relative;
+ 
+	width:100%;
+	height:100%;
 }
 
 .overlay {
 
-width:100%;
-height:100%;
- position:absolute;
+	width:100%;
+	height:100%;
+	position:absolute;
  
  }
 
@@ -100,14 +103,54 @@ height:100%;
      transition: opacity 2s ease-in-out;
 }
 
-.artPage img{
+.artPage .branchA{
+	width : 70%;
+	margin-top : 30%;
 	
-	
-	padding-top : 20px;
-	height:80%;
-	display: block;
 }
- 
+
+.artPage .branchB{
+	width : 80%;
+	/*the margin change by js*/
+	
+}
+
+/* night */
+@keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-webkit-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-moz-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-ms-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+
+.stars {
+  background:#000 url(../img/stars.png) repeat top center;
+
+}
+
+.twinkling{
+  background:transparent url(../img/twinkling.png) repeat top center;
+
+
+  -moz-animation:move-twink-back 200s linear infinite;
+  -ms-animation:move-twink-back 200s linear infinite;
+  -o-animation:move-twink-back 200s linear infinite;
+  -webkit-animation:move-twink-back 200s linear infinite;
+  animation:move-twink-back 200s linear infinite;
+}
+
+/* night */
+
 @-webkit-keyframes nomColorIn {
 	from{
 		stroke: #9ED7E8;

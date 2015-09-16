@@ -4,7 +4,7 @@ function isNavMobileMode() {
 
 function animationWhenEnter(elementString, animationNameArg)
 {
-	animatted = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+	
 	inAnimation  = 'nav-color-in';
 	outAnimation = 'nav-color-out';
 	
@@ -22,6 +22,21 @@ function animationWhenEnter(elementString, animationNameArg)
 		element.removeClass(inAnimation);
 		element.addClass(outAnimation);
 	});
+}
+
+function runAnimationByAddClass(elementString, className){
+		
+		animatted = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+		
+		var element = $(elementString);
+		var crClassName = className;
+		
+		console.log(element);
+		
+		element.addClass(crClassName).one(animatted, function(){
+				element.removeClass(crClassName);
+		});;
+				
 }
 
 function animateNomPage()
@@ -123,14 +138,9 @@ function initFullPage()
 			
 			if (nextIndex == 2)
 			{
+				runAnimationByAddClass('.artPage .branchA','animated slideInUp');
+				runAnimationByAddClass('.artPage .branchB','animated slideInUp');
 			
-				
-				/*
-				$('.OurGames1 .ziki').addClass('animated bounceInUp').
-				one(animatted, function(){
-					$('.OurGames1 .ziki').removeClass('animated bounceInUp');
-				});;
-				*/
 			}
 			
 		},
@@ -161,15 +171,18 @@ function initLinksNomPage()
 	});
 }
 
+function initArtPage(){
+	$('.artPage .branchA').css('margin-top',window.innerHeight * .3);
+	$('.artPage .branchB').css('margin-top',window.innerHeight * .7);
+}
+
 $(document).ready(function() {
 
 		initLinksNomPage();
-
+		
+		initArtPage();
+		
 		animateNomPage();
-
-		$(window).resize(function() {
-		   
-		});
 		
 		animationWhenEnter('nav ul a', ' pulse');
 
