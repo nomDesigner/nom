@@ -44,6 +44,8 @@ function animateNomPage()
 	$('.nomPage g path').attr("class", "nom-change-color-in");
 	$('.nomPage g circle').attr("class", "nom-change-color-in");
 	$('.nomPage .nom-circ').addClass('animated rubberBand');
+	animationArtCircle();
+	//startTrail();
 }
 
 function stopAnimateNomPage()
@@ -51,6 +53,7 @@ function stopAnimateNomPage()
 	$('.nomPage g path').attr("class", "nom-change-color-out");
 	$('.nomPage g circle').attr("class", "nom-change-color-out");
 	$('.nomPage .nom-circ').removeClass('animated rubberBand');
+	//stopTrail();
 }
 
 function animateText(elementName)
@@ -128,21 +131,20 @@ function initFullPage()
         onLeave: function(index, nextIndex, direction){
 	
 			stopAnimateNomPage();
-			stopTrail();
-			
+
 			if (nextIndex == 1)
 			{
 				animateNomPage();
-				startTrail();
+		
 			}
 			
 			if (nextIndex == 2)
 			{
+				
 				runAnimationByAddClass('.artPage .branchA','animated slideInUp');
 				runAnimationByAddClass('.artPage .branchB','animated slideInUp');
 			
 			}
-			
 		},
 
         afterRender: function(){},
@@ -157,33 +159,109 @@ function initLinksNomPage()
 	$('.nomPage table tr .nom-circ').click(function() {
 		
 		var ref = $(this).data('url');
+
+		location.href = ref;
 		
-		if(jQuery.browser.mobile){
-				
-			setTimeout(function(){
-						 location.href = ref;
-					}, 300); 
-		}
-		else{
-			 location.href = ref;
-		}
 			
 	});
 }
 
 function initArtPage(){
-	$('.artPage .branchA').css('margin-top',window.innerHeight * .3);
-	$('.artPage .branchB').css('margin-top',window.innerHeight * .7);
+	$('.artPage .branchA').css('margin-top',window.innerHeight * .4);
+	$('.artPage .branchB').css('margin-top',window.innerHeight * .8);
+}
+
+function createTransformAttr(x,y,r){
+
+	return 'translate('+x+','+y+') rotate(+'+r+')';
+}
+
+var pencilX;
+var pencilY;
+var pencilR;
+
+function getPencilAnimation(pencilElement, pencilParam, completeFunc){
+
+	var locCompleteFunc = completeFunc;
+	var lastX = 0;
+	var lastY = 0;
+	var lastR = 0;
+	
+	var pencilAnim = function(){ 
+		pencilElement.animate(
+			pencilParam,
+			{
+				duration: 3000,
+				step: function(now , fx) {
+						
+						if (fx.prop == "x") {
+							pencilX += (now - lastX);
+							lastX = now;
+						} else if (fx.prop == "y") {
+							pencilY += (now - lastY);
+							lastY = now;
+						} else if (fx.prop == "r") {
+							pencilR += (now - lastR);
+							lastR = now;
+						}
+
+						$(this).attr('transform', createTransformAttr(pencilX,pencilY,pencilR)); 
+					},
+				
+				complete: completeFunc
+			})};
+	
+	return pencilAnim;
+}
+
+function animationArtCircle(){
+	
+	pencilX = 0;
+	pencilY = 67,
+	pencilR = 270;
+	
+	var shift = 115;
+	var animDura = 1000;
+	
+	var pencil1 = { x: pencilX, y:pencilY ,r: pencilR};
+	var pencil2 = { x: 50, y:0 ,r: 0};
+	
+	var pencilElement = $('.nomPage .nom-circ .pencil');
+	
+	pencilElement.attr('x',0);
+	pencilElement.attr('x',0);
+	pencilElement.attr('transform', createTransformAttr(pencil1.x,pencil1.y,pencil1.r));
+	
+	var pencil1Anim = getPencilAnimation(pencilElement,pencil2);
+			
+	pencil1Anim();
+	
+	var secondRectFun = function(){ 
+		$('.nomPage .nom-circ .rect2').animate(
+			{ x: -shift },
+			{
+				duration: animDura,
+				step: function(now) { $(this).attr("x", now); }
+			})};	
+		
+	$('.nomPage .nom-circ .rect1').animate(
+		{ x: shift }, 
+		{
+			duration: animDura,
+			step: function(now) { $(this).attr("x", now); },
+			complete: secondRectFun
+	});	
+		
+				
+	
 }
 
 $(document).ready(function() {
 
 		initLinksNomPage();
-		
+		//initTrailNomPage();
 		initArtPage();
-		
-		animateNomPage();
-		
+
 		animationWhenEnter('nav ul a', ' pulse');
 
 		$('nav ul a').on('click', function(event){
@@ -197,8 +275,9 @@ $(document).ready(function() {
 		});
 
 		initFullPage();
-		initTrailNomPage();
-		
+
+		animateNomPage();
+	
 });
 
 var resizeId;
