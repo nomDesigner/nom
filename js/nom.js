@@ -41,18 +41,26 @@ function runAnimationByAddClass(elementString, className){
 
 function animateNomPage()
 {
-	$('.nomPage g path').attr("class", "nom-change-color-in");
-	$('.nomPage g circle').attr("class", "nom-change-color-in");
-	$('.nomPage .nom-circ').addClass('animated rubberBand');
+	$('.nomPage .nom-svg-container path').attr("class", "nom-change-color-in");
+	$('.nomPage .designCirc').attr("class", "designCirc nom-change-color-in");
+	$('.nomPage .photoCirc').attr("class", "photoCirc nom-change-color-in");
+	
+	//$('.nomPage .nom-circ').addClass('animated rubberBand');
 	animationArtCircle();
 	//startTrail();
 }
 
 function stopAnimateNomPage()
 {
-	$('.nomPage g path').attr("class", "nom-change-color-out");
-	$('.nomPage g circle').attr("class", "nom-change-color-out");
-	$('.nomPage .nom-circ').removeClass('animated rubberBand');
+	$('.nomPage .nom-svg-container path').attr("class", "nom-change-color-out");
+	$('.nomPage .designCirc').attr("class", "designCirc nom-change-color-out");
+	$('.nomPage .photoCirc').attr("class", "photoCirc nom-change-color-out");
+	
+	$('.nomPage .nom-circ .pencil').stop();
+	$('.nomPage .nom-circ .rect1').stop();
+	$('.nomPage .nom-circ .rect2').stop();
+	
+	//$('.nomPage .nom-circ').removeClass('animated rubberBand');
 	//stopTrail();
 }
 
@@ -173,36 +181,34 @@ function initArtPage(){
 
 function createTransformAttr(x,y,r){
 
-	return 'translate('+x+','+y+') rotate(+'+r+')';
+	return 'translate('+x+','+y+') rotate('+r+')';
 }
 
 var pencilX;
 var pencilY;
 var pencilR;
 
-function getPencilAnimation(pencilElement, pencilParam, completeFunc){
+function getPencilAnimation(pencilElement,dur, pencilParam, completeFunc){
 
-	var locCompleteFunc = completeFunc;
-	var lastX = 0;
-	var lastY = 0;
-	var lastR = 0;
-	
 	var pencilAnim = function(){ 
+	
+		var locCompleteFunc = completeFunc;
+	
 		pencilElement.animate(
 			pencilParam,
 			{
-				duration: 3000,
+				duration: dur,
 				step: function(now , fx) {
 						
 						if (fx.prop == "x") {
-							pencilX += (now - lastX);
-							lastX = now;
+		
+							pencilX = now ;
+				
 						} else if (fx.prop == "y") {
-							pencilY += (now - lastY);
-							lastY = now;
+							pencilY = now;
+
 						} else if (fx.prop == "r") {
-							pencilR += (now - lastR);
-							lastR = now;
+							pencilR = now;
 						}
 
 						$(this).attr('transform', createTransformAttr(pencilX,pencilY,pencilR)); 
@@ -214,46 +220,67 @@ function getPencilAnimation(pencilElement, pencilParam, completeFunc){
 	return pencilAnim;
 }
 
+function getRectAnimation(element, shift, dur, completeFunc){
+
+	var locCompleteFunc = completeFunc;
+	
+	var last = 0;
+	
+	var fun = function(){ 
+		
+			element.animate(
+				{ x: shift },
+				{
+					duration : dur,
+					step	 : function(now) {
+																
+										var newValue = (parseFloat($(this).attr("x")) + (now - last));
+										last = now;
+										$(this).attr("x", newValue); 
+									},
+					complete : locCompleteFunc
+				})};
+				
+	return fun;
+}
+
 function animationArtCircle(){
 	
 	pencilX = 0;
 	pencilY = 67,
-	pencilR = 270;
+	pencilR = -90;
 	
-	var shift = 115;
-	var animDura = 1000;
+	var shift = 57.5;
+	var animDura = 150;
+	var penAnimDura = 1000;
 	
 	var pencil1 = { x: pencilX, y:pencilY ,r: pencilR};
 	var pencil2 = { x: 50, y:0 ,r: 0};
+	var pencil3 = { x: 115, y:49 ,r: 90};
+	var pencil4 = { x: 67, y:115 ,r: 180};
+	var pencil5 = { x: 0, y:67 ,r: 270};
 	
 	var pencilElement = $('.nomPage .nom-circ .pencil');
+	var rect1Element =  $('.nomPage .nom-circ .rect1');
+	var rect2Element = $('.nomPage .nom-circ .rect2');
 	
-	pencilElement.attr('x',0);
-	pencilElement.attr('x',0);
-	pencilElement.attr('transform', createTransformAttr(pencil1.x,pencil1.y,pencil1.r));
+	rect1Element.attr('x', 0);
+	rect2Element.attr('x', 0);
 	
-	var pencil1Anim = getPencilAnimation(pencilElement,pencil2);
-			
+	//pencilElement.attr('transform', createTransformAttr(pencil1.x,pencil1.y,pencil1.r));
+	
+	var rect4Anim = getRectAnimation(rect2Element, -shift, animDura);
+	var pencil5Anim = getPencilAnimation(pencilElement, penAnimDura, pencil5,rect4Anim);
+	var rect3Anim = getRectAnimation(rect2Element, -shift, animDura, pencil5Anim);
+	var pencil4Anim = getPencilAnimation(pencilElement,penAnimDura,pencil4,rect3Anim);
+	var rect2Anim = getRectAnimation(rect1Element, shift, animDura, pencil4Anim);
+	var pencil3Anim = getPencilAnimation(pencilElement,penAnimDura,pencil3,rect2Anim);
+	var rect1Anim = getRectAnimation(rect1Element, shift, animDura, pencil3Anim);	
+	var pencil2Anim = getPencilAnimation(pencilElement,penAnimDura,pencil2,rect1Anim);
+	var pencil1Anim = getPencilAnimation(pencilElement,0,pencil1,pencil2Anim);
+
+	
 	pencil1Anim();
-	
-	var secondRectFun = function(){ 
-		$('.nomPage .nom-circ .rect2').animate(
-			{ x: -shift },
-			{
-				duration: animDura,
-				step: function(now) { $(this).attr("x", now); }
-			})};	
-		
-	$('.nomPage .nom-circ .rect1').animate(
-		{ x: shift }, 
-		{
-			duration: animDura,
-			step: function(now) { $(this).attr("x", now); },
-			complete: secondRectFun
-	});	
-		
-				
-	
 }
 
 $(document).ready(function() {
@@ -289,5 +316,5 @@ $(window).resize(function() {
  
  
 function doneResizing(){
-   windowResizeHandler();
+   //windowResizeHandler();
 }

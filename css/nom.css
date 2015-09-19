@@ -84,10 +84,16 @@ body
 	cursor: pointer; cursor: hand; 
 }
 
+.nomPage table tr .artCirc
+{
+	stroke:#FFFFFF;;
+}
+
 .nomPage table tr .nom-circ{
 	
 	max-width   : 200px;
 	width  	    : 100%;
+
 }
 
 .nomPage table tr .td-separate{
