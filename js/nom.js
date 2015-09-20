@@ -60,6 +60,7 @@ function stopAnimateNomPage()
 	$('.nomPage .nom-circ .rect1').stop();
 	$('.nomPage .nom-circ .rect2').stop();
 	
+
 	//$('.nomPage .nom-circ').removeClass('animated rubberBand');
 	//stopTrail();
 }
@@ -220,7 +221,7 @@ function getPencilAnimation(pencilElement,dur, pencilParam, completeFunc){
 	return pencilAnim;
 }
 
-function getRectAnimation(element, shift, dur, completeFunc){
+function getRectAnimation(element, v, dur, completeFunc){
 
 	var locCompleteFunc = completeFunc;
 	
@@ -229,14 +230,12 @@ function getRectAnimation(element, shift, dur, completeFunc){
 	var fun = function(){ 
 		
 			element.animate(
-				{ x: shift },
+				{ xziki: v},
 				{
 					duration : dur,
-					step	 : function(now) {
-																
-										var newValue = (parseFloat($(this).attr("x")) + (now - last));
-										last = now;
-										$(this).attr("x", newValue); 
+					step	 : function(now,fx) {
+										$(this).attr("x", now);
+										console.log(now);
 									},
 					complete : locCompleteFunc
 				})};
@@ -258,26 +257,25 @@ function animationArtCircle(){
 	var pencil2 = { x: 50, y:0 ,r: 0};
 	var pencil3 = { x: 115, y:49 ,r: 90};
 	var pencil4 = { x: 67, y:115 ,r: 180};
-	var pencil5 = { x: 0, y:67 ,r: 270};
+	var pencil5 = { x: 9, y:86 ,r: 250};
 	
 	var pencilElement = $('.nomPage .nom-circ .pencil');
 	var rect1Element =  $('.nomPage .nom-circ .rect1');
 	var rect2Element = $('.nomPage .nom-circ .rect2');
 	
-	rect1Element.attr('x', 0);
-	rect2Element.attr('x', 0);
-	
 	//pencilElement.attr('transform', createTransformAttr(pencil1.x,pencil1.y,pencil1.r));
 	
-	var rect4Anim = getRectAnimation(rect2Element, -shift, animDura);
+	var rect4Anim = getRectAnimation(rect2Element, -shift - shift, animDura);
 	var pencil5Anim = getPencilAnimation(pencilElement, penAnimDura, pencil5,rect4Anim);
 	var rect3Anim = getRectAnimation(rect2Element, -shift, animDura, pencil5Anim);
 	var pencil4Anim = getPencilAnimation(pencilElement,penAnimDura,pencil4,rect3Anim);
-	var rect2Anim = getRectAnimation(rect1Element, shift, animDura, pencil4Anim);
+	var rect2Anim = getRectAnimation(rect1Element, shift + shift, animDura, pencil4Anim);
 	var pencil3Anim = getPencilAnimation(pencilElement,penAnimDura,pencil3,rect2Anim);
 	var rect1Anim = getRectAnimation(rect1Element, shift, animDura, pencil3Anim);	
 	var pencil2Anim = getPencilAnimation(pencilElement,penAnimDura,pencil2,rect1Anim);
-	var pencil1Anim = getPencilAnimation(pencilElement,0,pencil1,pencil2Anim);
+	var rect2AnimInit = getRectAnimation(rect2Element, 0, 1, pencil2Anim);
+	var rect1AnimInit = getRectAnimation(rect1Element, 0, 1, rect2AnimInit);	
+	var pencil1Anim = getPencilAnimation(pencilElement,0,pencil1,rect1AnimInit);
 
 	
 	pencil1Anim();
