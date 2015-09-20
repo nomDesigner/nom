@@ -1,3 +1,10 @@
+
+var feadbacksQote = [
+	{feadback:'Nomi, I don’t have words\nto describe, just perfect!', manSay:'Debby1 Nadler | Branding'},
+	{feadback:'Ziki, I don’t have words\nto describe, just perfect!', manSay:'Debby2 Nadler | Branding'},
+	{feadback:'Bla, I don’t have words\nto describe, just perfect!' , manSay:'Debby3 Nadler | Branding'}	
+];
+
 function isNavMobileMode() {
     return ($('.navbar-toggle').css('display') != 'none');
 };
@@ -47,7 +54,45 @@ function animateNomPage()
 	
 	//$('.nomPage .nom-circ').addClass('animated rubberBand');
 	animationArtCircle();
+	animateFeadbacks();
 	//startTrail();
+}
+
+var animateFeadbacksInterval;
+
+function animateFeadbacks(){
+	
+	var interval = 5000;
+	var fadeInterval = 1000;
+	var i = 0;
+	
+	var feadBackElement = $(".nomPage .feadbacks");
+	var manSayElement 	= $(".nomPage .manSay");
+	
+	var animation = function(){
+		curFeadback = feadbacksQote[i];
+		
+	
+		
+		var obj = feadBackElement.text(curFeadback.feadback);
+		obj.html(obj.html().replace(/\n/g,'<br/>'));
+	
+		manSayElement.text(curFeadback.manSay);
+		
+		feadBackElement.fadeIn(fadeInterval);
+		manSayElement.fadeIn(fadeInterval);
+		
+		setTimeout(function(){ 
+			feadBackElement.fadeOut(fadeInterval);
+			manSayElement.fadeOut(fadeInterval);
+		}, interval - fadeInterval)
+		
+		i = (i + 1) % feadbacksQote.length;
+	};
+	
+	animation();
+	
+	animateFeadbacksInterval = setInterval(animation, interval);
 }
 
 function stopAnimateNomPage()
@@ -60,6 +105,10 @@ function stopAnimateNomPage()
 	$('.nomPage .nom-circ .rect1').stop();
 	$('.nomPage .nom-circ .rect2').stop();
 	
+	if (animateFeadbacksInterval){
+		clearInterval(animateFeadbacksInterval);
+		animateFeadbacksInterval = null;
+	}
 
 	//$('.nomPage .nom-circ').removeClass('animated rubberBand');
 	//stopTrail();
@@ -125,7 +174,7 @@ function initFullPage()
         controlArrows: true,
         verticalCentered: false,
         resize : false,
-        sectionsColor: ['#9ED7E8', '#F6EF76', '#7E8F7C', '#1BBC9B'],
+        sectionsColor: ['#1AC2B7', '#F6EF76', '#7E8F7C', '#1BBC9B'],
         paddingTop: '0px',
         paddingBottom: '0px',
         fixedElements: '.fullPageHeader, .footer',
@@ -251,7 +300,7 @@ function animationArtCircle(){
 	
 	var shift = 57.5;
 	var animDura = 150;
-	var penAnimDura = 1000;
+	var penAnimDura = 500;
 	
 	var pencil1 = { x: pencilX, y:pencilY ,r: pencilR};
 	var pencil2 = { x: 50, y:0 ,r: 0};

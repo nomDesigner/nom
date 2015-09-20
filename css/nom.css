@@ -1,7 +1,7 @@
 /*
 
-158 215 232
-
+26 194 183
+1AC2B7
 */
 body
 {
@@ -33,7 +33,7 @@ body
 
 .navbar-default .navbar-toggle .icon-bar
 {
-	background : #9ED7E8; 
+	background : #1AC2B7; 
 }
 
 .center-width{
@@ -45,7 +45,7 @@ body
 	float:right;
 }
 .canvas-wrap {
- position:relative;
+	position:relative;
  
 	width:100%;
 	height:100%;
@@ -59,11 +59,11 @@ body
  
  }
 
-.nomPage .nom-svg-container svg{
-	width  	   : 100%;
-	padding    : 50px;
+.nomPage .nom-svg-container{
+	width  	   : 70%;
+	max-width : 1000px;
 	padding-top   : 100px;
-	max-height : 400px;
+	padding-bottom : 20px;
 }
 
 .nomPage table {
@@ -72,9 +72,8 @@ body
 
 .nomPage table tr .td-circ{
 
-	color 	    : #777;
+	color 	    : #FFFFFF;
 	font-weight : 300;
-	width : 23%;
 }
 
 
@@ -92,16 +91,30 @@ body
 .nomPage table tr .nom-circ{
 	
 	max-width   : 200px;
-	width  	    : 100%;
+	width  	    : 80%;
 
 }
 
 .nomPage table tr .td-separate{
-	width : 5.5%;
+	width : 2%;
 }
 
 .nomPage table tr .td-edge{
 	width : 10%;
+}
+
+.nomPage .feadbacks{
+
+	 text-align: center;
+	 color 	    : #FFFFFF;
+	 font-weight : 300;
+	 font-size : 27px;
+	 margin-top : 40px;
+}
+.nomPage .manSay{
+	text-align: center;
+	 color 	    : #FFFFFF;
+	 font-weight : 300;
 }
 
 .about-page-img-fade-out {
@@ -159,7 +172,7 @@ body
 
 @-webkit-keyframes nomColorIn {
 	from{
-		stroke: #9ED7E8;
+		stroke: #1AC2B7;
 	}
 	to{
 		stroke: #FFFFFF;
@@ -168,7 +181,7 @@ body
 
 @keyframes nomColorIn {
 	from{
-		stroke: #9ED7E8;
+		stroke: #1AC2B7;
 	}
 	to{
 		stroke: #FFFFFF;
@@ -180,7 +193,7 @@ body
 		stroke: #FFFFFF;
 	}
 	to{
-		stroke: #9ED7E8;
+		stroke: #1AC2B7;
 	}
 }
 
@@ -189,13 +202,13 @@ body
 		stroke: #FFFFFF;
 	}
 	to{
-		stroke: #9ED7E8;
+		stroke: #1AC2B7;
 	}
 }
 
 @-webkit-keyframes navColorOut {
 	from{
-		color: #9ED7E8;
+		color: #1AC2B7;
 	}
 	to{
 		color: #777;
@@ -204,7 +217,7 @@ body
 
 @keyframes navColorOut {
 	from{
-		color: #9ED7E8;
+		color: #1AC2B7;
 	}
 	to{
 		color: #777;
@@ -216,7 +229,7 @@ body
 		color: #777;
 	}
 	to{
-		color: #9ED7E8;
+		color: #1AC2B7;
 	}
 }
 
@@ -225,7 +238,7 @@ body
 		color: #777;
 	}
 	to{
-		color: #9ED7E8;
+		color: #1AC2B7;
 	}
 }
 
